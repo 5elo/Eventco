@@ -1,0 +1,47 @@
+﻿@model EventDetailsDTO
+@{
+    var imageNames = Directory.GetFiles("wwwroot/Upload/Event");
+    var random = new Random();
+    var randomImage = imageNames[random.Next(imageNames.Length)];
+    var photolist = randomImage.Split("\\");
+    var MyPhoto = photolist[1];
+
+}
+<link rel="stylesheet" href="~/css/bootswatchTheme.css" />
+<h1>
+    <label>Title :</label>
+    @Model.Title
+</h1>
+<p>
+    <label>Breif :</label>
+
+    @Model.Brief
+</p>
+
+    <label>Address :</label>
+    @Model.Address
+    </p>
+<p>
+    <label>Start Date :</label>
+    @Model.StartDate.ToString("MMMM dd, yyyy") - @Model.EndDate.ToString("MMMM dd, yyyy")
+    </p>
+<p>
+<p>
+    <label>End Date :</label>
+        @Model.EndDate.ToString("MMMM dd, yyyy") - @Model.EndDate.ToString("MMMM dd, yyyy")
+</p>
+
+<p>
+    <label>Url :</label>
+        @Model.Url
+</p>
+
+<p>
+    <label>Event Category :</label>
+        @Model.EventCategoryName
+</p>
+<div class="col-sm-4 col-8 my-2">
+    <a href="javascript:var x=window.open('/Upload/Event/@MyPhoto',target = '_blank', width = '100%', height = '100%');">
+        <img src="~/Upload/Event/@MyPhoto" style="height:100% ;width: 30%;" />
+    </a>
+</div>
